@@ -7,9 +7,6 @@ class Report:
   def __init__(self):
     self.auth_url = "https://partner.api.dailymotion.com/oauth/v1/token"
     self.report_url = 'https://partner.api.dailymotion.com/graphql'
-    #self.auth_url = 'https://partner.api-staging.dailymotion.com/oauth/v1/token'
-    #self.report_url = 'https://partner.api-staging.dailymotion.com/graphql'
-
     self.token = self._get_token()
     self.authorization_header = {'Authorization': 'Bearer ' + self.token}
 

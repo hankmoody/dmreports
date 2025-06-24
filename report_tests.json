@@ -1,0 +1,53 @@
+{
+  "default_payload": {
+    "start_date": "2025-05-01",
+    "end_date": "2025-06-16",
+    "filters": {}
+  },
+  "tests": {
+    "BANDWIDTH REPORT BY VISITOR": {
+      "metrics": ["BANDWIDTH_USED_VOD_BYTES","BANDWIDTH_USED_LIVE_BYTES"],
+      "dimensions": ["DAY", "VISITOR_COUNTRY", "VISITOR_DOMAIN_GROUP", "VISITOR_SUBDOMAIN", "VISITOR_DEVICE_TYPE"]
+    },
+    "BANDWIDTH REPORT BY VIDEO RENDITION": {
+      "metrics": ["BANDWIDTH_USED_VOD_BYTES","BANDWIDTH_USED_LIVE_BYTES"],
+      "dimensions": ["DAY", "VIDEO_ID", "VIDEO_TITLE", "RENDITION_RESOLUTION", "RENDITION_FPS"]
+    },
+    "BANDWIDTH REPORT BY PLAYER": {
+      "metrics": ["BANDWIDTH_USED_VOD_BYTES","BANDWIDTH_USED_LIVE_BYTES"],
+      "dimensions": ["DAY", "PLAYER_TYPE", "PLAYER_ID", "PLAYER_TITLE"]
+    },
+    "BANDWIDTH REPORT BY ACTION": {
+      "metrics": ["BANDWIDTH_USED_VOD_BYTES","BANDWIDTH_USED_LIVE_BYTES"],
+      "dimensions": ["DAY", "ACTION"]
+    },
+    "BANDWIDTH REPORT BY PUBLISHER": {
+      "metrics": ["BANDWIDTH_USED_VOD_BYTES","BANDWIDTH_USED_LIVE_BYTES"],
+      "dimensions": ["DAY", "PUBLISHER_ID", "PUBLISHER_CHANNEL"]
+    },
+    "BANDWIDTH REPORT BY VIDEO OWNER": {
+      "metrics": ["BANDWIDTH_USED_VOD_BYTES","BANDWIDTH_USED_LIVE_BYTES"],
+      "dimensions": ["DAY", "VIDEO_OWNER_ID", "VIDEO_OWNER_USERNAME"]
+    },
+    "ENCODING REPORT BY VIDEO RENDITION": {
+      "metrics": ["TRANSCODING_USED_VOD_SECONDS", "TRANSCODING_USED_LIVE_SECONDS"],
+      "dimensions": ["DAY", "VIDEO_ID", "VIDEO_TITLE", "RENDITION_RESOLUTION", "RENDITION_FPS"]
+    },
+    "ENCODING REPORT BY VIDEO OWNER": {
+      "metrics": ["TRANSCODING_USED_VOD_SECONDS", "TRANSCODING_USED_LIVE_SECONDS"],
+      "dimensions": ["DAY", "VIDEO_OWNER_ID", "VIDEO_OWNER_USERNAME"]
+    },
+    "STORAGE REPORT BY VIDEO OWNER": {
+      "metrics": ["STORAGE_USED_BYTES"],
+      "dimensions": ["DAY", "VIDEO_OWNER_ID", "VIDEO_OWNER_USERNAME"],
+      "start_date": "2025-06-15",
+      "end_date": "2025-06-16"
+    },
+    "STORAGE REPORT BY VIDEO RENDITION": {
+      "metrics": ["STORAGE_USED_BYTES"],
+      "dimensions": ["DAY", "VIDEO_ID", "VIDEO_TITLE", "RENDITION_RESOLUTION", "RENDITION_FPS"],
+      "start_date": "2025-06-15",
+      "end_date": "2025-06-16"
+    }
+  }
+}

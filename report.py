@@ -1,35 +1,20 @@
 import requests
 import appsecrets
+import auth
 import json
 import time
 
 class Report:
-  def __init__(self):
-    self.auth_url = "https://partner.api.dailymotion.com/oauth/v1/token"
-    self.report_url = 'https://partner.api.dailymotion.com/graphql'
-    self.token = self._get_token()
-    self.authorization_header = {'Authorization': 'Bearer ' + self.token}
+  def __init__(self, env='prod'):
+    self._set_endpoints(env)
+    self.authorization_header = {'Authorization': 'Bearer ' + auth.get_token()}
 
-  def _get_token(self):
-    response = requests.post(
-      self.auth_url,
-      data={
-        'client_id': appsecrets.get_secret('API_KEY'),
-        'client_secret': appsecrets.get_secret('API_SECRET'),
-        'grant_type': 'client_credentials',
-        'scope': 'access_ads access_revenue create_reports delete_reports'
-      },
-      headers={
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
-    )
-    #print(response)
-    #print(json.dumps(json.loads(response.content), indent=2))
-
-    if response.status_code != 200 or not 'access_token' in response.json():
-        raise Exception('Invalid authentication response')
-
-    return response.json()['access_token']
+  def _set_endpoints(self, env):
+    if env == 'stage':
+      env_base = appsecrets.get_secret('STAGE_URL')
+    else:
+      env_base = 'https://partner.api.dailymotion.com/'
+    self.report_url = env_base + 'graphql'
 
   def create_report(self, metrics, dimensions, start_date, end_date, product, filters):
     print ("==>> Sending report creation request")
